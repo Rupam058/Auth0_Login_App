@@ -15,4 +15,6 @@
     <style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
         <item name="android:windowBackground">?android:colorBackground</item>
     </style>
+    <string name="com_auth0_domain">dev-iwfm2uf3wav2azdb.us.auth0.com</string>
+    <string name="com_auth0_scheme">com.auth0.sample</string>
 </resources>
