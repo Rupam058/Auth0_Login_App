@@ -37,7 +37,9 @@
       defer
     ></script> -->
     <meta name="redirect_uri" content="http://localhost:8080/auth/callback" />
-
+    <!-- <script src="https://cdn.auth0.com/js/auth0/9.13/auth0.min.js"></script> -->
+    <script src="https://cdn.auth0.com/js/auth0-spa-js/1.20.0/auth0-spa-js.production.js"></script>
+    <script defer src="main.dart.js"></script>
     <script>
       // The value below is injected by flutter build, do not touch.
       const serviceWorkerVersion = null;
@@ -62,5 +64,34 @@
         });
       });
     </script>
+    <script src="main.dart.js" type="application/javascript"></script>
+
+    <!-- <script type="text/javascript">
+      // Initialize the Auth0 client with the Auth0 domain and client ID
+      var auth0Client = new auth0.WebAuth({
+        domain: "dev-iwfm2uf3wav2azdb.us.auth0.com",
+        clientID: "tkIpQNuletXTgJDeEkjHu7fCC5E2pPmR",
+        redirectUri: "http://localhost:8000/callback",
+        responseType: "token id_token",
+        scope: "openid profile email",
+      });
+
+      // Handle the OAuth redirect
+      auth0Client.parseHash((err, authResult) => {
+        if (authResult && authResult.accessToken && authResult.idToken) {
+          window.location.hash = "";
+          auth0Client.client.userInfo(authResult.accessToken, (err, user) => {
+            // Store user and token in localStorage or session
+            localStorage.setItem("accessToken", authResult.accessToken);
+            localStorage.setItem("idToken", authResult.idToken);
+            localStorage.setItem("user", JSON.stringify(user));
+            // Redirect to the main app
+            window.location = "/";
+          });
+        } else if (err) {
+          console.error("Error parsing hash:", err);
+        }
+      });
+    </script> -->
   </body>
 </html>
