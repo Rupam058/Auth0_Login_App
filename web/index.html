@@ -32,10 +32,12 @@
     <title>auth0_login_app</title>
     <link rel="manifest" href="manifest.json" />
 
-    <script
+    <!-- <script
       src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"
       defer
-    ></script>
+    ></script> -->
+    <meta name="redirect_uri" content="http://localhost:8080/auth/callback" />
+
     <script>
       // The value below is injected by flutter build, do not touch.
       const serviceWorkerVersion = null;

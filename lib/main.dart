@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:auth0_login_app/auth_services.dart';
+// import 'package:auth0_login_app/web_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+void main() async {
+  await dotenv.load(fileName: ".env");
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // final AuthService _authService = AuthService();
-
   const MyApp({super.key});
 
   @override
@@ -33,9 +34,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    // Simulate a delay for the splash screen
     Future.delayed(const Duration(seconds: 2), () {
-      // Navigate to the login page
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => LoginPage()),
       );
@@ -44,7 +43,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(),
       ),
@@ -67,7 +66,6 @@ class LoginPage extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () async {
             await _authService.login();
-            // Navigate to the dashboard page after successful login
             Navigator.of(context).pushReplacement(
               MaterialPageRoute(builder: (context) => DashboardPage()),
             );
@@ -102,7 +100,6 @@ class DashboardPage extends StatelessWidget {
             ElevatedButton(
               onPressed: () async {
                 await _authService.logout();
-                // Navigate back to the login page after logout
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => LoginPage()),
                 );

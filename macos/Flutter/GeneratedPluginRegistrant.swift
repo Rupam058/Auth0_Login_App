@@ -5,8 +5,8 @@
 import FlutterMacOS
 import Foundation
 
-import flutter_web_auth
+import auth0_flutter
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
-  FlutterWebAuthPlugin.register(with: registry.registrar(forPlugin: "FlutterWebAuthPlugin"))
+  Auth0FlutterPlugin.register(with: registry.registrar(forPlugin: "Auth0FlutterPlugin"))
 }
