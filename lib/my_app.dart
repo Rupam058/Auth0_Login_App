@@ -18,6 +18,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   UserProfile? _user;
 
+  // Credentials? _credentials;
+
   late Auth0 auth0;
   late Auth0Web auth0Web;
 
@@ -31,6 +33,7 @@ class _MyAppState extends State<MyApp> {
     if (kIsWeb) {
       auth0Web.onLoad().then((final credential) => setState(() {
             _user = credential?.user;
+            // _credentials = credential;
           }));
     }
   }
@@ -38,14 +41,15 @@ class _MyAppState extends State<MyApp> {
   Future<void> login() async {
     try {
       if (kIsWeb) {
-        return auth0Web.loginWithRedirect(redirectUrl: 'http://localhost:3000');
+        return auth0Web.loginWithRedirect(redirectUrl: 'http://localhost:40275');
       }
 
-      var credentials = await auth0.webAuthentication(scheme: dotenv.env['AUTH0_CUSTOME_SCHEME']).login(useHTTPS: true);
+      // var credentials = await auth0.webAuthentication(scheme: dotenv.env['AUTH0_CUSTOME_SCHEME']).login(useHTTPS: true);
 
-      setState(() {
-        _user = credentials.user;
-      });
+      // setState(() {
+      //   _user = credentials.user;
+      //   // _credentials = credentials;
+      // });
     } catch (e) {
       print('Login error: $e');
     }
@@ -54,7 +58,7 @@ class _MyAppState extends State<MyApp> {
   Future<void> logout() async {
     try {
       if (kIsWeb) {
-        await auth0Web.logout(returnToUrl: 'http://localhost:3000');
+        await auth0Web.logout(returnToUrl: 'http://localhost:40275');
       } else {
         await auth0.webAuthentication(scheme: dotenv.env['AUTH0_CUSTOME_SCHEME']).logout(useHTTPS: true);
       }
